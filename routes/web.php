@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -32,8 +33,17 @@ Route::middleware('auth')->group(function () {
 Route::middleware(['auth', 'admin'])
     ->prefix('admin')
     ->group(function () {
+        // Dashboard routes
         Route::get('dashboard', [DashboardController::class, 'index'])
             ->name('dashboard.index');
+
+        // Category routes    
+        Route::get('category', [CategoryController::class, 'index'])
+            ->name('category.index');
+
+        Route::post('category', [CategoryController::class, 'store'])
+            ->name('category.create');
+
 });
 
 // Route::prefix('admin')->group(function () {
