@@ -14,10 +14,15 @@ class Book extends Model
     protected $fillable = [
         'category_id',
         'name',
-        'slug',
-        'detail_desc',
+        'author',
         'desc',
+        'date_of_issue',
         'status',
 
     ];
+
+    public function bookImages()
+    {
+        return $this->hasMany(BookImage::class, 'book_id', 'id');
+    }
 }

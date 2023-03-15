@@ -21,4 +21,9 @@ class Category extends Model
         'meta_keyword',
         'status',
     ];
+
+    public function books()
+    {
+        return $this->hasMany(Book::class, 'category_id', 'id');
+    }
 }

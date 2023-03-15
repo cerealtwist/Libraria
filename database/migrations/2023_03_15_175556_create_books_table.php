@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('category_id');
             $table->string('name');
-            $table->string('slug');
-            $table->mediumText('detail_desc')->nullable();
+            $table->string('author');
+            $table->string('date_of_issue');
             $table->longText('desc')->nullable();
             $table->tinyInteger('status')->default('0');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
