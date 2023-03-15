@@ -20,7 +20,7 @@
         />
         
         <link rel="stylesheet" href="{{ asset('admin/css/tailwind.output.css')}}" />
-
+        
         <!-- Scripts -->
         {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
 

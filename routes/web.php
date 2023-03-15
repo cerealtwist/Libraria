@@ -33,6 +33,7 @@ Route::middleware('auth')->group(function () {
 Route::middleware(['auth', 'admin'])
     ->prefix('admin')
     ->group(function () {
+
         // Dashboard routes
         Route::get('dashboard', [DashboardController::class, 'index'])
             ->name('dashboard.index');
@@ -43,6 +44,12 @@ Route::middleware(['auth', 'admin'])
 
         Route::post('category', [CategoryController::class, 'store'])
             ->name('category.create');
+
+        Route::get('category/{category}/edit', [CategoryController::class, 'edit'])
+            ->name('category.edit');
+
+        Route::put('category/{category}', [CategoryController::class, 'update'])
+            ->name('category.update');
 
 });
 
