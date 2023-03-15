@@ -59,6 +59,12 @@
         ></script>
         <script src="{{ asset('admin/js/charts-lines.js')}}" defer></script>
         <script src="{{ asset('admin/js/charts-pie.js')}}" defer></script>
+        <script>
+            function deleteAlert() {
+              alert("Are you sure want to delete this category?");
+            }
+            </script>
         @livewireScripts
+        @stack('script')
     </body>
 </html>
