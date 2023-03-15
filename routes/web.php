@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\BookController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\ProfileController;
@@ -35,26 +36,15 @@ Route::middleware(['auth', 'admin'])
     ->group(function () {
 
         // Dashboard routes
+
         Route::get('dashboard', [DashboardController::class, 'index'])
             ->name('dashboard.index');
 
-        // Category routes    
-        Route::get('category', [CategoryController::class, 'index'])
-            ->name('category.index');
-
-        Route::post('category', [CategoryController::class, 'store'])
-            ->name('category.create');
-
-        Route::get('category/{category}/edit', [CategoryController::class, 'edit'])
-            ->name('category.edit');
-
-        Route::put('category/{category}', [CategoryController::class, 'update'])
-            ->name('category.update');
+        Route::resources([
+            'category' => CategoryController::class,
+            'books' => BookController::class,
+        ]);
 
 });
-
-// Route::prefix('admin')->group(function () {
-//     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
-// });
 
 require __DIR__.'/auth.php';
