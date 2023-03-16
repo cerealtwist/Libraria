@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BookFormRequest;
 use App\Models\Book;
+use App\Models\BookImage;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class BookController extends Controller
 {
@@ -41,7 +43,7 @@ class BookController extends Controller
                 $extension = $imageFile->getClientOriginalExtension();
                 $filename = time().$i++.'.'.$extension;
                 $imageFile->move($uploadPath,$filename);
-                $finalImagePathName = $uploadPath.'-'.$filename;
+                $finalImagePathName = $uploadPath.'/'.$filename;
 
                 $book->bookImages()->create([
                     'book_id' => $book->id,
@@ -64,7 +66,7 @@ class BookController extends Controller
     public function update(BookFormRequest $request, int $book_id)
     {
         $validatedData = $request->validated();
-        
+
         $book = Category::findOrFail($validatedData['category_id'])
                         ->books()->where('id', $book_id)->first();
         if($book)
@@ -86,7 +88,7 @@ class BookController extends Controller
                     $extension = $imageFile->getClientOriginalExtension();
                     $filename = time().$i++.'.'.$extension;
                     $imageFile->move($uploadPath,$filename);
-                    $finalImagePathName = $uploadPath.'-'.$filename;
+                    $finalImagePathName = $uploadPath.'/'.$filename;
     
                     $book->bookImages()->create([
                         'book_id' => $book->id,
@@ -102,6 +104,16 @@ class BookController extends Controller
         {
             return redirect('/admin/books')->with('message', 'Book Id Not Found');
         }
+    }
+
+    public function destroyImage(int $book_image_id)
+    {
+        $bookImage = BookImage::findOrFail($book_image_id);
+        if(File::exists($bookImage->image)){
+            File::delete($bookImage->image);
+        }
+        $bookImage->delete();
+        return redirect()->back()->with('message','Book Image Deleted');
     }
 
 

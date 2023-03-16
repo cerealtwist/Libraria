@@ -61,7 +61,7 @@
         <script src="{{ asset('admin/js/charts-pie.js')}}" defer></script>
         <script>
             function deleteAlert() {
-              alert("Are you sure want to delete this category?");
+              alert("Are you sure want to delete this?");
             }
             </script>
         @livewireScripts
