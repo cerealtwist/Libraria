@@ -46,8 +46,8 @@ class BookFormRequest extends FormRequest
                 'nullable',
             ],
             'image' => [
-                'required',
-                'mimes:jpeg,jpg,png,bmp'
+                'nullable',
+                // 'image|mimes:jpeg,png,jpg'
             ],
             
         ];

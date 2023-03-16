@@ -43,7 +43,7 @@ class BookController extends Controller
                 $extension = $imageFile->getClientOriginalExtension();
                 $filename = time().$i++.'.'.$extension;
                 $imageFile->move($uploadPath,$filename);
-                $finalImagePathName = $uploadPath.'/'.$filename;
+                $finalImagePathName = $uploadPath.$filename;
 
                 $book->bookImages()->create([
                     'book_id' => $book->id,
