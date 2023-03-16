@@ -54,7 +54,7 @@
                 <span class="text-gray-700 dark:text-gray-400">
                   Category
                 </span>
-                <select class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-multiselect focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray" multiple="">
+                <select class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-multiselect focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray" multiple="" name="category_id">
                   @foreach ($categories as $category)  
                   <option value="{{ $category->id }}">{{ $category->name }}</option>
                   @endforeach
@@ -76,7 +76,7 @@
               <span class="text-gray-700 dark:text-gray-400">Date of Issue</span>
               <input class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
               type="text"
-              name="author">
+              name="date_of_issue">
           </label>
             
             <div class="mt-4 text-sm">

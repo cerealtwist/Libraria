@@ -38,17 +38,16 @@ class BookFormRequest extends FormRequest
                 'required',
                 'string'
             ],
-            'description' => [
+            'desc' => [
                 'required',
                 'string'
             ],
             'status' => [
-                'required',
-                'string'
+                'nullable',
             ],
             'image' => [
                 'nullable',
-                'image|mimes:jpg,jpeg,png'
+                'mimes:jpg,jpeg,png'
             ],
             
         ];

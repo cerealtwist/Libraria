@@ -24,7 +24,7 @@
                     </thead>
                     <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
                         @foreach ($books as $book)
-                            
+
                         <tr class="text-gray-700 dark:text-gray-400">
                             <td class="px-4 py-3">
                             <div class="flex items-center text-sm">
@@ -45,7 +45,11 @@
                                 {{ $book->author }}
                             </td>
                             <td class="px-4 py-3 text-sm">
-                                {{ $book->category }}
+                                @if($book->category)
+                                    {{ $book->category->name }}
+                                @else
+                                    Uncategorized
+                                @endif
                             </td>
                             
                             <td class="px-4 py-3 text-xs">
@@ -55,6 +59,9 @@
                             </td>
                             <td class="px-4 py-3 text-sm">
                                 {{ $book->desc }}
+                            </td>
+                            <td class="px-4 py-3 text-sm">
+                                {{ $book->date_of_issue }}
                             </td>
                             <td class="px-4 py-3">
                                 <div class="flex items-center space-x-4 text-sm">
@@ -71,6 +78,7 @@
                                 </div>
                             </td>
                         </tr>
+
                         @endforeach
                     </tbody>
                 </table>
@@ -81,8 +89,6 @@
                 </span>
                 <span class="col-span-2"></span>
 
-                <!-- Pagination -->
-                {{$books->links('pagination-links')}}
                 
                 </div>
         </div>

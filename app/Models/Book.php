@@ -21,6 +21,11 @@ class Book extends Model
 
     ];
 
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'category_id', 'id');
+    }
+
     public function bookImages()
     {
         return $this->hasMany(BookImage::class, 'book_id', 'id');
